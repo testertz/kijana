@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream-50 text-forest-900 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    @apply bg-spice-300 text-forest-900;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-spice-500 ring-offset-2 ring-offset-cream-50;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .container-narrow {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-forest-700 text-cream-50 hover:bg-forest-800 active:scale-[0.98] shadow-soft;
+  }
+  .btn-accent {
+    @apply btn bg-spice-600 text-cream-50 hover:bg-spice-700 active:scale-[0.98] shadow-soft;
+  }
+  .btn-whatsapp {
+    @apply btn bg-[#1f7a4d] text-white hover:bg-[#1a6a42] active:scale-[0.98] shadow-soft;
+  }
+  .btn-outline {
+    @apply btn border border-forest-700/20 bg-transparent text-forest-800 hover:border-forest-700/40 hover:bg-forest-50;
+  }
+  .btn-ghost {
+    @apply btn text-forest-700 hover:bg-forest-50;
+  }
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+  .btn-md {
+    @apply px-5 py-2.5 text-sm;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+  .input {
+    @apply w-full rounded-xl border border-earth-200 bg-white px-4 py-3 text-sm text-forest-900 placeholder:text-earth-400 transition-colors focus:border-spice-500 focus:ring-2 focus:ring-spice-500/20;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-forest-800;
+  }
+  .label-required::after {
+    content: ' *';
+    @apply text-hibiscus-600;
+  }
+  .card {
+    @apply rounded-2xl border border-earth-200/70 bg-white shadow-soft;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium;
+  }
+  .section-title {
+    @apply font-display text-3xl font-semibold text-forest-900 sm:text-4xl;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-spice-600;
+  }
+  .skeleton {
+    @apply rounded-xl bg-gradient-to-r from-earth-100 via-cream-200 to-earth-100 bg-[length:1000px_100%] animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
