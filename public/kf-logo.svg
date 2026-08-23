@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <path d="M100 18C72 18 52 38 52 66C52 92 72 114 100 114C128 114 148 92 148 66C148 38 128 18 100 18Z" fill="#185a1c"/>
+  <path d="M100 28C78 28 62 44 62 66C62 86 78 104 100 104C122 104 138 86 138 66C138 44 122 28 100 28Z" fill="#2e8a31"/>
+  <path d="M100 36L100 96" stroke="#bbe1bc" stroke-width="3" stroke-linecap="round"/>
+  <path d="M100 52L80 44M100 52L120 44M100 68L76 58M100 68L124 58M100 84L84 74M100 84L116 74" stroke="#bbe1bc" stroke-width="2" stroke-linecap="round"/>
+  <path d="M40 130C40 130 60 180 100 180C140 180 160 130 160 130L40 130Z" fill="#dc2626"/>
+  <path d="M82 122C82 116 86 112 86 106M100 120C100 114 104 110 104 104M118 122C118 116 122 112 122 106" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+  <text x="100" y="162" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2">KF</text>
+</svg>
