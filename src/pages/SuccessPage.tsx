@@ -2,7 +2,6 @@ import { CheckCircle2, MessageCircle, ShoppingBag } from 'lucide-react';
 import { useRouter } from '@/state/Router';
 import { WhatsAppIcon } from '@/components/layout/Header';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
-import { Reveal } from '@/components/ui';
 
 interface SuccessPageProps {
   variant: 'order' | 'booking' | 'chef' | 'application' | 'partner' | 'contact';
@@ -65,9 +64,9 @@ export default function SuccessPage({ variant, title, message, primaryLabel, pri
   return (
     <div className="pt-16 sm:pt-20">
       <div className="container-px py-16 sm:py-24">
-        <Reveal direction="scale" className="mx-auto max-w-lg text-center">
+        <div className="mx-auto max-w-lg text-center">
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-forest-100 text-forest-700 animate-scale-in">
-            <CheckCircle2 size={40} className="animate-check-draw" style={{ strokeDasharray: 40, strokeDashoffset: 0 }} />
+            <CheckCircle2 size={40} />
           </div>
           <h1 className="mt-6 font-display text-3xl font-semibold text-forest-900 sm:text-4xl">{title ?? d.title}</h1>
           <p className="mt-4 text-earth-700">{message ?? d.message}</p>
@@ -89,7 +88,7 @@ export default function SuccessPage({ variant, title, message, primaryLabel, pri
           <button onClick={() => navigate('/')} className="mt-6 text-sm text-earth-500 underline-offset-2 hover:underline">
             Back to home
           </button>
-        </Reveal>
+        </div>
       </div>
     </div>
   );

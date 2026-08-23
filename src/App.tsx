@@ -22,7 +22,6 @@ import AdminPage from '@/pages/AdminPage';
 
 function Routes() {
   const { segments } = useRouter();
-  const routeKey = segments.join('/') || 'home';
 
   let page: React.ReactNode;
 
@@ -53,12 +52,7 @@ function Routes() {
     else page = <HomePage />;
   }
 
-  // Keyed wrapper provides a fresh fade-up on every route change
-  return (
-    <div key={routeKey} className="animate-fade-in">
-      {page}
-    </div>
-  );
+  return page;
 }
 
 function AppShell() {

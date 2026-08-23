@@ -40,7 +40,7 @@ export default function QuantityControl({
       >
         <Minus size={size === 'sm' ? 14 : 16} />
       </button>
-      <span key={v} className={classNames('text-center font-semibold text-forest-900 animate-scale-in', txt)}>{v}</span>
+      <span className={classNames('text-center font-semibold text-forest-900', txt)}>{v}</span>
       <button
         type="button"
         onClick={inc}

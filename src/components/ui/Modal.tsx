@@ -43,14 +43,14 @@ export default function Modal({ open, onClose, title, children, size = 'md', cla
       aria-modal="true"
     >
       <div
-        className="animate-fade-in absolute inset-0 bg-forest-950/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-forest-950/50 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
       <div
         ref={ref}
         className={classNames(
-          'animate-slide-down relative z-10 flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl bg-cream-50 shadow-lift sm:rounded-3xl',
+          'relative z-10 flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl bg-cream-50 shadow-lift sm:rounded-3xl',
           sizeMap[size],
           className,
         )}

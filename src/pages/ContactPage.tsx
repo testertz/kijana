@@ -6,8 +6,6 @@ import { siteConfig } from '@/config/site';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { WhatsAppIcon } from '@/components/layout/Header';
 import { validateRequired, validatePhone, validateEmail, isFormValid } from '@/lib/validation';
-import { Reveal } from '@/components/ui';
-import { classNames } from '@/lib/format';
 
 export default function ContactPage() {
   const { navigate } = useRouter();
@@ -44,18 +42,18 @@ export default function ContactPage() {
 
       <div className="container-px py-12 sm:py-16">
         {submitted ? (
-          <Reveal direction="scale" className="mx-auto max-w-lg text-center">
+          <div className="mx-auto max-w-lg text-center">
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-forest-100 text-forest-700 animate-scale-in">
-              <Check size={40} className="animate-check-draw" style={{ strokeDasharray: 40, strokeDashoffset: 0 }} />
+              <Check size={40} />
             </div>
             <h2 className="mt-6 font-display text-3xl font-semibold text-forest-900">Message sent!</h2>
             <p className="mt-4 text-earth-700">Thank you for reaching out. We will get back to you shortly.</p>
             <button onClick={() => navigate('/')} className="btn-outline btn-lg mt-6">Back to Home</button>
-          </Reveal>
+          </div>
         ) : (
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Contact info */}
-            <Reveal direction="left">
+            <div>
               <h2 className="font-display text-2xl font-semibold text-forest-900">Get in touch</h2>
               <div className="mt-6 space-y-4">
                 <ContactRow icon={<Phone size={18} />} label="Phone" value={siteConfig.contact.phone} />
@@ -85,37 +83,37 @@ export default function ContactPage() {
                   src={`https://www.google.com/maps?q=${encodeURIComponent(siteConfig.contact.mapQuery)}&output=embed`}
                 />
               </div>
-            </Reveal>
+            </div>
 
             {/* Form */}
-            <Reveal direction="left" delay={100} className="card p-6">
+            <div className="card p-6">
               <h2 className="font-display text-2xl font-semibold text-forest-900">Send a message</h2>
               <form onSubmit={submit} className="mt-5 space-y-4">
                 <div>
                   <label className="label label-required" htmlFor="ct-name">Name</label>
-                  <input id="ct-name" className={classNames('input', errors.name && 'input-error border-hibiscus-400')} value={form.name} onChange={(e) => update('name', e.target.value)} />
-                  {errors.name && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.name}</p>}
+                  <input id="ct-name" className="input" value={form.name} onChange={(e) => update('name', e.target.value)} />
+                  {errors.name && <p className="mt-1 text-xs text-hibiscus-600">{errors.name}</p>}
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="label label-required" htmlFor="ct-email">Email</label>
-                    <input id="ct-email" className={classNames('input', errors.email && 'input-error border-hibiscus-400')} value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="you@example.com" inputMode="email" />
-                    {errors.email && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.email}</p>}
+                    <input id="ct-email" className="input" value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="you@example.com" inputMode="email" />
+                    {errors.email && <p className="mt-1 text-xs text-hibiscus-600">{errors.email}</p>}
                   </div>
                   <div>
                     <label className="label label-required" htmlFor="ct-phone">Phone</label>
-                    <input id="ct-phone" className={classNames('input', errors.phone && 'input-error border-hibiscus-400')} value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="+255 7XX XXX XXX" inputMode="tel" />
-                    {errors.phone && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.phone}</p>}
+                    <input id="ct-phone" className="input" value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="+255 7XX XXX XXX" inputMode="tel" />
+                    {errors.phone && <p className="mt-1 text-xs text-hibiscus-600">{errors.phone}</p>}
                   </div>
                 </div>
                 <div>
                   <label className="label label-required" htmlFor="ct-msg">Message</label>
-                  <textarea id="ct-msg" className={classNames('input min-h-32', errors.message && 'input-error border-hibiscus-400')} value={form.message} onChange={(e) => update('message', e.target.value)} placeholder="How can we help?" />
-                  {errors.message && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.message}</p>}
+                  <textarea id="ct-msg" className="input min-h-32" value={form.message} onChange={(e) => update('message', e.target.value)} placeholder="How can we help?" />
+                  {errors.message && <p className="mt-1 text-xs text-hibiscus-600">{errors.message}</p>}
                 </div>
                 <button type="submit" className="btn-primary btn-lg w-full">Send message</button>
               </form>
-            </Reveal>
+            </div>
           </div>
         )}
       </div>

@@ -1,8 +1,6 @@
 import { classNames } from '@/lib/format';
 import { Star } from 'lucide-react';
 
-export { Reveal, RevealGroup } from '@/components/ui/Reveal';
-
 export function Stars({ rating, size = 14 }: { rating: number; size?: number }) {
   return (
     <div className="flex items-center gap-0.5" aria-label={`Rating ${rating} out of 5`}>
@@ -37,7 +35,7 @@ export function Badge({ children, variant = 'default', className }: BadgeProps) 
   return <span className={classNames('chip', badgeVariants[variant], className)}>{children}</span>;
 }
 
-export function Divider({ className }: { className?: string }) {
+export function Divider({ className }: { className: string }) {
   return <hr className={classNames('border-earth-200/70', className)} />;
 }
 

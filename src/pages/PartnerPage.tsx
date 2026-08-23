@@ -4,7 +4,6 @@ import { useRouter } from '@/state/Router';
 import { useToast } from '@/state/ToastContext';
 import { validateRequired, validatePhone, validateEmail, isFormValid } from '@/lib/validation';
 import { classNames } from '@/lib/format';
-import { Reveal } from '@/components/ui';
 
 const supportTypes = [
   'Farmer Partnership',
@@ -45,9 +44,9 @@ export default function PartnerPage() {
     return (
       <div className="pt-16 sm:pt-20">
         <div className="container-px py-16 sm:py-24">
-          <Reveal direction="scale" className="mx-auto max-w-lg text-center">
+          <div className="mx-auto max-w-lg text-center">
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-forest-100 text-forest-700 animate-scale-in">
-              <Check size={40} className="animate-check-draw" style={{ strokeDasharray: 40, strokeDashoffset: 0 }} />
+              <Check size={40} />
             </div>
             <h1 className="mt-6 font-display text-3xl font-semibold text-forest-900 sm:text-4xl">Thank you for partnering with KF!</h1>
             <p className="mt-4 text-earth-700">Your partnership interest has been received. Our team will reach out within 3–5 business days to discuss how we can work together.</p>
@@ -55,7 +54,7 @@ export default function PartnerPage() {
               <button onClick={() => navigate('/')} className="btn-outline btn-lg">Back to Home</button>
               <button onClick={() => navigate('/impact')} className="btn-primary btn-lg">Read our impact</button>
             </div>
-          </Reveal>
+          </div>
         </div>
       </div>
     );
@@ -84,8 +83,8 @@ export default function PartnerPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="label label-required" htmlFor="p-name">Name</label>
-                <input id="p-name" className={classNames('input', errors.name && 'input-error border-hibiscus-400')} value={form.name} onChange={(e) => update('name', e.target.value)} />
-                {errors.name && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.name}</p>}
+                <input id="p-name" className="input" value={form.name} onChange={(e) => update('name', e.target.value)} />
+                {errors.name && <p className="mt-1 text-xs text-hibiscus-600">{errors.name}</p>}
               </div>
               <div>
                 <label className="label" htmlFor="p-org">Organization</label>
@@ -93,13 +92,13 @@ export default function PartnerPage() {
               </div>
               <div>
                 <label className="label label-required" htmlFor="p-email">Email</label>
-                <input id="p-email" className={classNames('input', errors.email && 'input-error border-hibiscus-400')} value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="you@example.com" inputMode="email" />
-                {errors.email && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.email}</p>}
+                <input id="p-email" className="input" value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="you@example.com" inputMode="email" />
+                {errors.email && <p className="mt-1 text-xs text-hibiscus-600">{errors.email}</p>}
               </div>
               <div>
                 <label className="label label-required" htmlFor="p-phone">Phone</label>
-                <input id="p-phone" className={classNames('input', errors.phone && 'input-error border-hibiscus-400')} value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="+255 7XX XXX XXX" inputMode="tel" />
-                {errors.phone && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.phone}</p>}
+                <input id="p-phone" className="input" value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="+255 7XX XXX XXX" inputMode="tel" />
+                {errors.phone && <p className="mt-1 text-xs text-hibiscus-600">{errors.phone}</p>}
               </div>
             </div>
           </div>
@@ -113,8 +112,8 @@ export default function PartnerPage() {
                   type="button"
                   onClick={() => setSupportType(t)}
                   className={classNames(
-                    'flex items-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-medium transition-all duration-200 active:scale-95',
-                    supportType === t ? 'border-spice-500 bg-spice-50 ring-2 ring-spice-500/20 text-forest-900' : 'border-earth-200 bg-white text-forest-800 hover:border-spice-300 hover:shadow-soft',
+                    'flex items-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-medium transition-all',
+                    supportType === t ? 'border-spice-500 bg-spice-50 ring-2 ring-spice-500/20 text-forest-900' : 'border-earth-200 bg-white text-forest-800 hover:border-spice-300',
                   )}
                 >
                   {supportType === t && <Check size={14} className="text-spice-600" />}
@@ -122,12 +121,12 @@ export default function PartnerPage() {
                 </button>
               ))}
             </div>
-            {errors.supportType && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.supportType}</p>}
+            {errors.supportType && <p className="mt-1 text-xs text-hibiscus-600">{errors.supportType}</p>}
 
             <div className="mt-4">
               <label className="label label-required" htmlFor="p-msg">Message</label>
-              <textarea id="p-msg" className={classNames('input min-h-32', errors.message && 'input-error border-hibiscus-400')} value={form.message} onChange={(e) => update('message', e.target.value)} placeholder="Tell us about your partnership interest..." />
-              {errors.message && <p className="mt-1 animate-slide-down text-xs text-hibiscus-600">{errors.message}</p>}
+              <textarea id="p-msg" className="input min-h-32" value={form.message} onChange={(e) => update('message', e.target.value)} placeholder="Tell us about your partnership interest..." />
+              {errors.message && <p className="mt-1 text-xs text-hibiscus-600">{errors.message}</p>}
             </div>
           </div>
 

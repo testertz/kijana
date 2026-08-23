@@ -28,9 +28,9 @@ export default function Stepper({ steps, current, onStepClick }: StepperProps) {
               >
                 <span
                   className={classNames(
-                    'flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-all duration-300',
+                    'flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold',
                     done && 'bg-forest-700 text-cream-50',
-                    active && 'scale-110 bg-spice-600 text-cream-50 ring-4 ring-spice-500/20',
+                    active && 'bg-spice-600 text-cream-50 ring-2 ring-spice-500/20',
                     !done && !active && 'bg-earth-100 text-earth-500',
                   )}
                 >
@@ -53,7 +53,7 @@ export default function Stepper({ steps, current, onStepClick }: StepperProps) {
               {i < steps.length - 1 && (
                 <span
                   className={classNames(
-                    'h-px flex-1 transition-colors',
+                    'h-px flex-1',
                     i < current ? 'bg-forest-400' : 'bg-earth-200',
                   )}
                 />

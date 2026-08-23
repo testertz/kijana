@@ -2,7 +2,7 @@ import { ArrowRight, Sprout, Factory, GraduationCap, Users, HeartHandshake, Leaf
 import { useRouter } from '@/state/Router';
 import { impactStats, testimonials, chefs } from '@/data/mockData';
 import { useCountUp, useInView } from '@/lib/hooks';
-import { Stars, Reveal } from '@/components/ui';
+import { Stars } from '@/components/ui';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { WhatsAppIcon } from '@/components/layout/Header';
 
@@ -75,33 +75,47 @@ export default function AboutPage() {
       {/* Mission & Vision */}
       <section className="container-px py-16 sm:py-20">
         <div className="grid gap-6 lg:grid-cols-3">
-          {[
-            { icon: Target, cls: 'bg-forest-100 text-forest-700', title: 'Our Mission', text: 'To connect Tanzanian farmers, food products, dining experiences and chefs into one ecosystem that delivers natural, healthy and authentic flavours — while creating economic opportunity for young Tanzanians.' },
-            { icon: Eye, cls: 'bg-spice-100 text-spice-700', title: 'Our Vision', text: 'A Tanzania where healthy, natural food is accessible to all, where farmers are valued partners, and where young people build careers in agriculture, food and hospitality.' },
-            { icon: Compass, cls: 'bg-hibiscus-100 text-hibiscus-700', title: 'Our Promise', text: 'Every product, experience and chef booking supports our community. Transparent pricing, honest ingredients and a commitment to the people who make Kijana Factory possible.' },
-          ].map((c, i) => (
-            <Reveal key={c.title} staggerIndex={i} staggerMs={100} className="card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${c.cls}`}>
-                <c.icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-5 font-display text-xl font-semibold text-forest-900">{c.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-earth-700">{c.text}</p>
-            </Reveal>
-          ))}
+          <div className="card p-8">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-forest-100 text-forest-700">
+              <Target className="h-6 w-6" />
+            </div>
+            <h3 className="mt-5 font-display text-xl font-semibold text-forest-900">Our Mission</h3>
+            <p className="mt-3 text-sm leading-relaxed text-earth-700">
+              To connect Tanzanian farmers, food products, dining experiences and chefs into one ecosystem that delivers natural, healthy and authentic flavours — while creating economic opportunity for young Tanzanians.
+            </p>
+          </div>
+          <div className="card p-8">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-spice-100 text-spice-700">
+              <Eye className="h-6 w-6" />
+            </div>
+            <h3 className="mt-5 font-display text-xl font-semibold text-forest-900">Our Vision</h3>
+            <p className="mt-3 text-sm leading-relaxed text-earth-700">
+              A Tanzania where healthy, natural food is accessible to all, where farmers are valued partners, and where young people build careers in agriculture, food and hospitality.
+            </p>
+          </div>
+          <div className="card p-8">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-hibiscus-100 text-hibiscus-700">
+              <Compass className="h-6 w-6" />
+            </div>
+            <h3 className="mt-5 font-display text-xl font-semibold text-forest-900">Our Promise</h3>
+            <p className="mt-3 text-sm leading-relaxed text-earth-700">
+              Every product, experience and chef booking supports our community. Transparent pricing, honest ingredients and a commitment to the people who make Kijana Factory possible.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Story section */}
       <section className="bg-cream-100 py-16 sm:py-24">
         <div className="container-px grid items-center gap-10 lg:grid-cols-2">
-          <Reveal direction="scale" className="relative">
+          <div className="relative">
             <img src={storyImage} alt="Tanzanian farmer in the field" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
             <div className="absolute -bottom-5 -right-3 rounded-2xl bg-spice-600 p-5 text-cream-50 shadow-card sm:-right-6">
               <p className="font-display text-3xl font-semibold">50+</p>
               <p className="text-sm text-cream-200/90">Partner farmers</p>
             </div>
-          </Reveal>
-          <Reveal direction="left" delay={100}>
+          </div>
+          <div>
             <p className="eyebrow">Our Story</p>
             <h2 className="section-title mt-2">It started with farmers</h2>
             <div className="mt-5 space-y-4 text-earth-700">
@@ -118,26 +132,26 @@ export default function AboutPage() {
             <button onClick={() => navigate('/impact')} className="btn-primary btn-lg mt-8">
               Read our full impact story <ArrowRight size={18} />
             </button>
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* What we do — pillars */}
       <section className="container-px py-16 sm:py-24">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">What We Do</p>
           <h2 className="section-title mt-2">Six pillars of Kijana Factory</h2>
           <p className="mt-4 text-earth-700">From the farm to your dining table, every pillar is connected and every one serves our community.</p>
-        </Reveal>
+        </div>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {pillars.map((p, i) => (
-            <Reveal key={p.title} staggerIndex={i} staggerMs={80} className="card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+          {pillars.map((p) => (
+            <div key={p.title} className="card p-6 transition-all hover:-translate-y-1 hover:shadow-lift">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-forest-100 text-forest-700">
                 <p.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold text-forest-900">{p.title}</h3>
               <p className="mt-2 text-sm text-earth-600">{p.text}</p>
-            </Reveal>
+            </div>
           ))}
         </div>
       </section>
@@ -145,7 +159,7 @@ export default function AboutPage() {
       {/* Craft section */}
       <section className="bg-forest-900 py-16 text-cream-50 sm:py-24">
         <div className="container-px grid items-center gap-10 lg:grid-cols-2">
-          <Reveal direction="left" className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1">
             <p className="eyebrow text-spice-400">Our Craft</p>
             <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">Small-batch, big care</h2>
             <p className="mt-4 max-w-lg text-cream-200/85">
@@ -158,8 +172,8 @@ export default function AboutPage() {
                 'Quality checks at every stage',
                 'Customizable to your exact taste',
                 'Transparent pricing — you see every cost',
-              ].map((f, i) => (
-                <li key={f} className="flex items-center gap-3" style={{ transitionDelay: `${i * 60}ms` }}>
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-3">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-spice-600 text-xs">✓</span>
                   {f}
                 </li>
@@ -168,35 +182,33 @@ export default function AboutPage() {
             <button onClick={() => navigate('/shop')} className="btn-accent btn-lg mt-8">
               Browse products <ArrowRight size={18} />
             </button>
-          </Reveal>
-          <Reveal direction="scale" delay={100} className="relative order-1 lg:order-2">
+          </div>
+          <div className="relative order-1 lg:order-2">
             <img src={craftImage} alt="Colorful spices in bowls" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Timeline */}
       <section className="container-px py-16 sm:py-24">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Our Journey</p>
           <h2 className="section-title mt-2">How we grew</h2>
-        </Reveal>
+        </div>
         <div className="mt-12 max-w-3xl space-y-0">
           {timeline.map((item, i) => (
-            <Reveal key={item.year} staggerIndex={i} staggerMs={100} direction="left">
-              <div className="flex gap-6">
-                <div className="flex flex-col items-center">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-spice-600 font-display text-sm font-bold text-cream-50">
-                    {item.year}
-                  </div>
-                  {i < timeline.length - 1 && <div className="w-px flex-1 bg-earth-200" />}
+            <div key={item.year} className="flex gap-6">
+              <div className="flex flex-col items-center">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-spice-600 font-display text-sm font-bold text-cream-50">
+                  {item.year}
                 </div>
-                <div className={i < timeline.length - 1 ? 'pb-10' : ''}>
-                  <h3 className="font-display text-lg font-semibold text-forest-900">{item.title}</h3>
-                  <p className="mt-1.5 text-sm text-earth-600">{item.text}</p>
-                </div>
+                {i < timeline.length - 1 && <div className="w-px flex-1 bg-earth-200" />}
               </div>
-            </Reveal>
+              <div className={i < timeline.length - 1 ? 'pb-10' : ''}>
+                <h3 className="font-display text-lg font-semibold text-forest-900">{item.title}</h3>
+                <p className="mt-1.5 text-sm text-earth-600">{item.text}</p>
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -204,19 +216,19 @@ export default function AboutPage() {
       {/* Values */}
       <section className="bg-cream-100 py-16 sm:py-24">
         <div className="container-px">
-          <Reveal className="mx-auto max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow">What We Stand For</p>
             <h2 className="section-title mt-2">Our values</h2>
-          </Reveal>
+          </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {values.map((v, i) => (
-              <Reveal key={v.title} staggerIndex={i} staggerMs={80} className="card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+            {values.map((v) => (
+              <div key={v.title} className="card p-6">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-spice-100 text-spice-700">
                   <v.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-display text-lg font-semibold text-forest-900">{v.title}</h3>
                 <p className="mt-1.5 text-sm text-earth-600">{v.text}</p>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>
@@ -230,35 +242,29 @@ export default function AboutPage() {
       {/* Community image strip */}
       <section className="container-px pb-16 sm:pb-20">
         <div className="grid gap-3 sm:grid-cols-3">
-          {[
-            { src: communityImage, alt: 'Farmers working together' },
-            { src: kitchenImage, alt: 'Traditional cooking' },
-            { src: storyImage, alt: 'Farmer with fresh harvest' },
-          ].map((img, i) => (
-            <Reveal key={i} staggerIndex={i} staggerMs={100} direction="scale" className="group overflow-hidden rounded-2xl shadow-soft">
-              <img src={img.src} alt={img.alt} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110" />
-            </Reveal>
-          ))}
+          <img src={communityImage} alt="Farmers working together" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-soft" />
+          <img src={kitchenImage} alt="Traditional cooking" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-soft" />
+          <img src={storyImage} alt="Farmer with fresh harvest" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-soft" />
         </div>
       </section>
 
       {/* Team highlight */}
       <section className="bg-forest-50 py-16 sm:py-20">
         <div className="container-px">
-          <Reveal className="mx-auto max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow">Our Team</p>
             <h2 className="section-title mt-2">The people behind KF</h2>
             <p className="mt-4 text-earth-700">From farmers to chefs, every person in the Kijana Factory family shares a commitment to natural, healthy and authentic Tanzanian food.</p>
-          </Reveal>
+          </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {chefs.slice(0, 4).map((chef, i) => (
-              <Reveal key={chef.id} staggerIndex={i} staggerMs={80} className="card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+            {chefs.slice(0, 4).map((chef) => (
+              <div key={chef.id} className="card overflow-hidden">
                 <img src={chef.photo} alt={chef.name} loading="lazy" className="aspect-square w-full object-cover" />
                 <div className="p-4">
                   <p className="font-display text-sm font-semibold text-forest-900">{chef.name}</p>
                   <p className="text-xs text-earth-500">{chef.speciality}</p>
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
           <div className="mt-8 text-center">
@@ -271,44 +277,44 @@ export default function AboutPage() {
 
       {/* Testimonials */}
       <section className="container-px py-16 sm:py-20">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Wanasema</p>
           <h2 className="section-title mt-2">What our community says</h2>
-        </Reveal>
+        </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.id} as="figure" staggerIndex={i} staggerMs={80} className="card flex flex-col p-6">
+          {testimonials.map((t) => (
+            <figure key={t.id} className="card flex flex-col p-6">
               <Stars rating={t.rating} />
               <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-earth-700">&ldquo;{t.text}&rdquo;</blockquote>
               <figcaption className="mt-4">
                 <p className="font-semibold text-forest-900">{t.author}</p>
                 <p className="text-xs text-earth-500">{t.role}</p>
               </figcaption>
-            </Reveal>
+            </figure>
           ))}
         </div>
       </section>
 
       {/* CTA */}
       <section className="container-px pb-20">
-        <Reveal direction="scale" className="overflow-hidden rounded-3xl bg-spice-600 px-6 py-12 text-center text-cream-50 sm:px-12 sm:py-16">
+        <div className="overflow-hidden rounded-3xl bg-spice-600 px-6 py-12 text-center text-cream-50 sm:px-12 sm:py-16">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Join the KF family</h2>
           <p className="mx-auto mt-3 max-w-xl text-cream-100/90">
             Shop our products, book a dining experience, hire a chef, or partner with us. Every action supports Tanzanian farmers and communities.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <button onClick={() => navigate('/shop')} className="btn btn-lg bg-cream-50 text-spice-700 hover:bg-cream-100 active:scale-95">Shop now</button>
+            <button onClick={() => navigate('/shop')} className="btn btn-lg bg-cream-50 text-spice-700 hover:bg-cream-100">Shop now</button>
             <a
               href={buildWhatsAppUrl('Habari! Ningeomba kujua zaidi kuhusu Kijana Factory.')}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg border border-cream-50/40 text-cream-50 hover:bg-cream-50/10 active:scale-95"
+              className="btn btn-lg border border-cream-50/40 text-cream-50 hover:bg-cream-50/10"
             >
               <WhatsAppIcon className="h-5 w-5" />
               Chat with us
             </a>
           </div>
-        </Reveal>
+        </div>
       </section>
     </div>
   );

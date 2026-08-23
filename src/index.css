@@ -86,9 +86,6 @@
   .skeleton {
     @apply rounded-xl bg-gradient-to-r from-earth-100 via-cream-200 to-earth-100 bg-[length:1000px_100%] animate-shimmer;
   }
-  .input-error {
-    @apply animate-error-shake;
-  }
 }
 
 @layer utilities {
@@ -104,58 +101,5 @@
   }
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
-  }
-  /* Scroll reveal — starts hidden, transitions in when .is-visible is added */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition-property: opacity, transform;
-    transition-duration: 0.6s;
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-  }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .reveal-left {
-    opacity: 0;
-    transform: translateX(-24px);
-    transition-property: opacity, transform;
-    transition-duration: 0.6s;
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal-left.is-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .reveal-scale {
-    opacity: 0;
-    transform: scale(0.95);
-    transition-property: opacity, transform;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal-scale.is-visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-  /* Respect reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .reveal,
-    .reveal-left,
-    .reveal-scale {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
   }
 }

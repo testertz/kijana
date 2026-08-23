@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, ShoppingBag, X } from 'lucide-react';
 import { useRouter } from '@/state/Router';
 import { useCart } from '@/state/CartContext';
@@ -19,21 +19,6 @@ export default function Header() {
   const { count } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [cartBump, setCartBump] = useState(false);
-  const prevCountRef = useRef(count);
-
-  useEffect(() => {
-    if (count > prevCountRef.current) {
-      setCartBump(true);
-      const t = setTimeout(() => setCartBump(false), 500);
-      return () => clearTimeout(t);
-    }
-    prevCountRef.current = count;
-  }, [count]);
-
-  useEffect(() => {
-    prevCountRef.current = count;
-  }, [count]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -107,17 +92,12 @@ export default function Header() {
           </a>
           <button
             onClick={() => go('/cart')}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-forest-50 text-forest-800 transition-all duration-200 hover:bg-forest-100 active:scale-90"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-forest-50 text-forest-800 transition-colors hover:bg-forest-100"
             aria-label={`Cart with ${count} items`}
           >
-            <ShoppingBag size={18} className={classNames('transition-transform duration-200', cartBump && 'scale-110')} />
+            <ShoppingBag size={18} />
             {count > 0 && (
-              <span
-                className={classNames(
-                  'absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-spice-600 px-1 text-[10px] font-bold text-cream-50',
-                  cartBump ? 'animate-cart-bounce' : 'animate-scale-in',
-                )}
-              >
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-spice-600 px-1 text-[10px] font-bold text-cream-50">
                 {count}
               </span>
             )}
@@ -134,39 +114,35 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-      <div
-        className={classNames(
-          'overflow-hidden border-t border-earth-200/70 bg-cream-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden',
-          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
-        )}
-      >
-        <nav className="container-px flex flex-col gap-1 py-4">
-          {navLinks.map((link, i) => (
-            <button
-              key={link.to}
-              onClick={() => go(link.to)}
-              className={classNames(
-                'animate-slide-right rounded-xl px-4 py-3 text-left text-base font-medium transition-colors',
-                isActive(link.to)
-                  ? 'bg-forest-700 text-cream-50'
-                  : 'text-forest-800 hover:bg-forest-50',
-              )}
-              style={{ animationDelay: menuOpen ? `${i * 40}ms` : undefined }}
+      {menuOpen && (
+        <div className="border-t border-earth-200/70 bg-cream-50 lg:hidden">
+          <nav className="container-px flex flex-col gap-1 py-4">
+            {navLinks.map((link) => (
+              <button
+                key={link.to}
+                onClick={() => go(link.to)}
+                className={classNames(
+                  'rounded-xl px-4 py-3 text-left text-base font-medium transition-colors',
+                  isActive(link.to)
+                    ? 'bg-forest-700 text-cream-50'
+                    : 'text-forest-800 hover:bg-forest-50',
+                )}
+              >
+                {link.label}
+              </button>
+            ))}
+            <a
+              href={buildWhatsAppUrl('Habari! Ningeomba msaada kuhusu KF products/services.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp btn-lg mt-2 w-full"
             >
-              {link.label}
-            </button>
-          ))}
-          <a
-            href={buildWhatsAppUrl('Habari! Ningeomba msaada kuhusu KF products/services.')}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-whatsapp btn-lg mt-2 w-full"
-          >
-            <WhatsAppIcon className="h-5 w-5" />
-            Chat with KF
-          </a>
-        </nav>
-      </div>
+              <WhatsAppIcon className="h-5 w-5" />
+              Chat with KF
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

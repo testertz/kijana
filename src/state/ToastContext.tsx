@@ -49,7 +49,7 @@ function ToastViewport({ toasts, dismiss }: { toasts: Toast[]; dismiss: (id: num
         <button
           key={t.id}
           onClick={() => dismiss(t.id)}
-          className={`animate-toast-in max-w-sm rounded-xl px-4 py-3 text-sm font-medium shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-95 ${
+          className={`animate-scale-in max-w-sm rounded-xl px-4 py-3 text-sm font-medium shadow-lg transition-transform hover:scale-[1.02] active:scale-95 ${
             t.type === 'success'
               ? 'bg-forest-700 text-cream-50'
               : t.type === 'error'

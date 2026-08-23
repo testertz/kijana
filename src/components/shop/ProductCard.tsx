@@ -4,7 +4,7 @@ import { useRouter } from '@/state/Router';
 import { useCart } from '@/state/CartContext';
 import { useToast } from '@/state/ToastContext';
 import { formatPrice } from '@/lib/format';
-import { Badge, Stars, Reveal } from '@/components/ui';
+import { Badge, Stars } from '@/components/ui';
 
 export default function ProductCard({ product }: { product: Product }) {
   const { navigate } = useRouter();
@@ -32,13 +32,16 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <Reveal as="article" direction="up" className="group card flex cursor-pointer flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift">
+    <article
+      onClick={() => navigate(`/product/${product.id}`)}
+      className="group card flex cursor-pointer flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lift"
+    >
       <div className="relative aspect-square overflow-hidden bg-cream-100">
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
           {product.featured && <Badge variant="spice">Featured</Badge>}
@@ -51,7 +54,7 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </div>
 
-      <div onClick={() => navigate(`/product/${product.id}`)} className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-4">
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-display text-base font-semibold leading-tight text-forest-900">{product.name}</h3>
           <Stars rating={product.rating} size={12} />
@@ -83,6 +86,6 @@ export default function ProductCard({ product }: { product: Product }) {
           </button>
         </div>
       </div>
-    </Reveal>
+    </article>
   );
 }

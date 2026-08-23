@@ -2,7 +2,6 @@ import { ArrowRight, Sprout, Factory, GraduationCap, Users, HeartHandshake, Leaf
 import { useRouter } from '@/state/Router';
 import { impactStats, impactGallery } from '@/data/mockData';
 import { useCountUp, useInView } from '@/lib/hooks';
-import { Reveal } from '@/components/ui';
 
 export default function ImpactPage() {
   const { navigate } = useRouter();
@@ -52,14 +51,14 @@ export default function ImpactPage() {
             <h2 className="section-title mt-2">How we create change</h2>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {sections.map((s, i) => (
-              <Reveal key={s.title} staggerIndex={i} staggerMs={80} className="card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+            {sections.map((s) => (
+              <div key={s.title} className="card p-6 transition-all hover:-translate-y-1 hover:shadow-lift">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-forest-100 text-forest-700">
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-display text-lg font-semibold text-forest-900">{s.title}</h3>
                 <p className="mt-2 text-sm text-earth-600">{s.text}</p>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>
@@ -73,16 +72,16 @@ export default function ImpactPage() {
         </div>
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
           {impactGallery.map((img, i) => (
-            <Reveal key={i} staggerIndex={i} staggerMs={60} direction="scale" className={`group overflow-hidden rounded-2xl shadow-soft ${i % 5 === 0 ? 'sm:col-span-2 sm:row-span-2' : ''}`}>
-              <img src={img} alt={`KF community ${i + 1}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110" />
-            </Reveal>
+            <div key={i} className={`overflow-hidden rounded-2xl shadow-soft ${i % 5 === 0 ? 'sm:col-span-2 sm:row-span-2' : ''}`}>
+              <img src={img} alt={`KF community ${i + 1}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+            </div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
       <section className="container-px pb-20">
-        <Reveal direction="scale" className="overflow-hidden rounded-3xl bg-forest-900 px-6 py-12 text-center text-cream-50 sm:px-12 sm:py-16">
+        <div className="overflow-hidden rounded-3xl bg-forest-900 px-6 py-12 text-center text-cream-50 sm:px-12 sm:py-16">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Want to grow with us?</h2>
           <p className="mx-auto mt-3 max-w-xl text-cream-200/85">
             Partner with Kijana Factory as a farmer, school, corporate or sponsor. Together we can build a healthier Tanzania.
@@ -90,7 +89,7 @@ export default function ImpactPage() {
           <button onClick={() => navigate('/partner')} className="btn-accent btn-lg mt-7">
             Partner with KF <ArrowRight size={18} />
           </button>
-        </Reveal>
+        </div>
       </section>
     </div>
   );

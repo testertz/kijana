@@ -1,7 +1,7 @@
 import { ArrowRight, Calendar, ChefHat, Clock, MapPin, Users } from 'lucide-react';
 import { useRouter } from '@/state/Router';
 import { diningExperiences } from '@/data/mockData';
-import { Stars, Badge, Reveal } from '@/components/ui';
+import { Stars, Badge } from '@/components/ui';
 import { formatPrice } from '@/lib/format';
 
 export default function ServicesPage() {
@@ -23,12 +23,11 @@ export default function ServicesPage() {
       {/* Two major services */}
       <section className="container-px py-12 sm:py-16">
         <div className="grid gap-6 lg:grid-cols-2">
-          <Reveal direction="up" className="group relative overflow-hidden rounded-3xl text-left shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift">
-            <button
-              onClick={() => navigate('/experiences')}
-              className="block w-full"
-            >
-            <img src={diningExperiences[0].images[0]} alt="Dining experiences" className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 sm:aspect-[16/10]" />
+          <button
+            onClick={() => navigate('/experiences')}
+            className="group relative overflow-hidden rounded-3xl text-left shadow-card transition-all hover:shadow-lift"
+          >
+            <img src={diningExperiences[0].images[0]} alt="Dining experiences" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:aspect-[16/10]" />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-950/90 via-forest-950/30 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-cream-50 sm:p-8">
               <Badge variant="spice" className="mb-2">Dining Experiences</Badge>
@@ -40,15 +39,13 @@ export default function ServicesPage() {
                 Explore experiences <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </span>
             </div>
-            </button>
-          </Reveal>
+          </button>
 
-          <Reveal direction="up" delay={100} className="group relative overflow-hidden rounded-3xl text-left shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift">
-            <button
-              onClick={() => navigate('/chef')}
-              className="block w-full"
-            >
-            <img src="https://images.pexels.com/photos/4253298/pexels-photo-4253298.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="KF Chef" className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 sm:aspect-[16/10]" />
+          <button
+            onClick={() => navigate('/chef')}
+            className="group relative overflow-hidden rounded-3xl text-left shadow-card transition-all hover:shadow-lift"
+          >
+            <img src="https://images.pexels.com/photos/4253298/pexels-photo-4253298.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="KF Chef" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:aspect-[16/10]" />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-950/90 via-forest-950/30 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-cream-50 sm:p-8">
               <Badge variant="spice" className="mb-2">KF Chef</Badge>
@@ -60,8 +57,7 @@ export default function ServicesPage() {
                 Request a chef <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </span>
             </div>
-            </button>
-          </Reveal>
+          </button>
         </div>
       </section>
 
@@ -75,10 +71,10 @@ export default function ServicesPage() {
             </div>
           </div>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {diningExperiences.map((exp, i) => (
-              <Reveal key={exp.id} as="article" staggerIndex={i} staggerMs={80} className="card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+            {diningExperiences.map((exp) => (
+              <article key={exp.id} className="card group flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lift">
                 <button onClick={() => navigate(`/experience/${exp.id}`)} className="relative aspect-[4/3] overflow-hidden">
-                  <img src={exp.images[0]} alt={exp.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110" />
+                  <img src={exp.images[0]} alt={exp.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute left-3 top-3"><Badge variant="forest">{exp.duration}</Badge></div>
                 </button>
                 <div className="flex flex-1 flex-col p-5">
@@ -102,7 +98,7 @@ export default function ServicesPage() {
                     </button>
                   </div>
                 </div>
-              </Reveal>
+              </article>
             ))}
           </div>
         </div>
@@ -110,7 +106,7 @@ export default function ServicesPage() {
 
       {/* Become a chef */}
       <section className="container-px py-12 sm:py-16">
-        <Reveal direction="scale" className="overflow-hidden rounded-3xl bg-forest-900 px-6 py-10 text-cream-50 sm:px-12 sm:py-14">
+        <div className="overflow-hidden rounded-3xl bg-forest-900 px-6 py-10 text-cream-50 sm:px-12 sm:py-14">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <div>
               <ChefHat className="h-10 w-10 text-spice-400" />
@@ -130,7 +126,7 @@ export default function ServicesPage() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
       </section>
     </div>
   );
