@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#185a1c"/>
+  <path d="M32 12C20 12 14 20 14 30C14 39 20 48 32 48C44 48 50 39 50 30C50 20 44 12 32 12Z" fill="#2e8a31"/>
+  <path d="M32 18L32 42" stroke="#bbe1bc" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 26L24 22M32 26L40 22M32 32L22 27M32 32L42 27M32 38L26 34M32 38L38 34" stroke="#bbe1bc" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M18 46C18 46 24 56 32 56C40 56 46 46 46 46L18 46Z" fill="#dc2626"/>
+  <text x="32" y="53" font-family="Georgia, serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">KF</text>
+</svg>
